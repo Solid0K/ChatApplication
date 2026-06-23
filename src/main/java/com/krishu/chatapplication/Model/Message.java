@@ -13,10 +13,7 @@ public class Message {
     private String message;
     private LocalDateTime timestamp;
 
-    public Message(){};
-
-    public Message(String id, String sender, String message, LocalDateTime timestamp) {
-        this.id = id;
+    public Message(String sender, String message, LocalDateTime timestamp) {
         this.sender = sender;
         this.message = message;
         this.timestamp = timestamp;

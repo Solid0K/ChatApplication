@@ -3,24 +3,18 @@ package com.krishu.chatapplication.DTO;
 import jakarta.validation.constraints.NotBlank;
 
 public class ChatMessage {
-    @NotBlank
-    private String sender;
+    private String username;
     @NotBlank
     private String message;
 
     public ChatMessage(){}
 
-    public ChatMessage(String sender, String message) {
-        this.sender = sender;
-        this.message = message;
+    public String getUsername() {
+        return username;
     }
 
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMessage() {
