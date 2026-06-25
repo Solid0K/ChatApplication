@@ -4,20 +4,24 @@ import com.krishu.chatapplication.DTO.LoginRequest;
 import com.krishu.chatapplication.DTO.RegisterRequest;
 import com.krishu.chatapplication.Model.User;
 import com.krishu.chatapplication.Repository.UserRepo;
+import com.krishu.chatapplication.WebSocket.ChatWebSocketHandler;
 import jakarta.validation.Valid;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.util.Set;
 
 @Service
 public class UserService {
     private final UserRepo user_repo;
     private final BCryptPasswordEncoder encoder;
     private final JWTService jwtService;
+    private ChatWebSocketHandler handler;
 
-    public UserService(UserRepo user_repo,BCryptPasswordEncoder encoder,JWTService jwtService){
+    public UserService(UserRepo user_repo,BCryptPasswordEncoder encoder,JWTService jwtService,ChatWebSocketHandler handler){
         this.user_repo=user_repo;
         this.encoder=encoder;
         this.jwtService=jwtService;
+        this.handler=handler;
     }
 
 
@@ -40,5 +44,10 @@ public class UserService {
             throw new RuntimeException("Password is incorrect");
         }
         return jwtService.getToken(user.getUsername());
+    }
+
+
+    public Set<String> getOnlineUsers() {
+        return handler.onlineUser();
     }
 }

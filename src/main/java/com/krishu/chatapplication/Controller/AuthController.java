@@ -4,10 +4,7 @@ import com.krishu.chatapplication.DTO.LoginRequest;
 import com.krishu.chatapplication.DTO.RegisterRequest;
 import com.krishu.chatapplication.Service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthController {
@@ -22,7 +19,7 @@ public class AuthController {
         service.registerUser(request);
     }
 
-    @GetMapping("/loginUser")
+    @PostMapping("/loginUser")
     public String login(@Valid @RequestBody LoginRequest request){
         return service.verify(request);
     }

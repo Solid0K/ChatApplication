@@ -6,6 +6,8 @@ public class ChatMessage {
     private String username;
     @NotBlank
     private String message;
+    private String receiver;
+    private String messageType;
 
     public ChatMessage(){}
 
@@ -23,5 +25,21 @@ public class ChatMessage {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getType() {
+        return messageType;
+    }
+
+    public void setType(String type) {
+        this.messageType = type;
     }
 }
